@@ -21,8 +21,17 @@ export class Triangle implements Figure {
     b: number,
     c: number,
   ) {
+    if (a <= 0 || b <= 0 || c <= 0) {
+      throw new Error(
+        'Invalid triangle: side lengths must be positive numbers',
+      );
+    }
+
     if (a >= b + c || b >= a + c || c >= a + b) {
-      throw new Error('cant make triangle');
+      throw new Error(
+        'Invalid triangle: sides with given measurements cannot form ' +
+          'a triangle',
+      );
     }
 
     this.shape = 'triangle';
